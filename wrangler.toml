@@ -1,0 +1,30 @@
+name = "workaholic-site-demo"
+type = "javascript"
+account_id = "c63d756a160ad09cd9a82553c77e9174"
+zone_id = "622ad109259227680bce9543285b50c3"
+route = "demo.workaholic.site/*"
+workers_dev = true
+
+[[kv_namespaces]]
+binding = "CONTENT"
+preview_id = "2a5bc0bcea334efcb92c51892b5a8e3c"
+id = "28c5833cb7494566ba868166bddc234b"
+
+[build]
+command = "npx workaholic build worker.js"
+
+[build.upload]
+format="service-worker"
+
+[workaholic]
+source = "content"
+binding = "CONTENT"
+
+[workaholic.site]
+basename = "/api"
+
+[[workaholic.plugins]]
+source = "@workaholic/core/src/plugins/plugin-frontmatter"
+
+[[workaholic.plugins]]
+source = "./plugins/list.ts"
